@@ -31,10 +31,10 @@ const TicketForm = () => {
   const startdata = {
     title: "",
     description: "",
-    category: "Late entry",
-    priority: 4,
+    category: "Technical Support",
+    priority: 2,
     progress: 0,
-    status: "Not Paid",
+    status: "Not Started",
   };
 
   const [formData, setFormData] = useState(startdata);
@@ -72,13 +72,11 @@ const TicketForm = () => {
           value={formData.category}
           onChange={handleChange}
         >
-          <option value="Late entry">Late entry</option>
-          <option value="Overdue returns">Overdue returns</option>
-          <option value="Late registration">Late registration</option>
-          <option value="Rule violation">Rule violation</option>
-          <option value="Disciplinary infraction">
-            Disciplinary infraction
-          </option>
+          <option value="Technical Support">Technical Support</option>
+          <option value="Payment Issues">Payment Issues</option>
+          <option value="Inquiries">Inquiries</option>
+          <option value="Hardware Issues">Hardware Issues</option>
+          <option value="Policy Violations">Policy Violations</option>
         </select>
         <label>Priority</label>
         <div>
@@ -140,9 +138,9 @@ const TicketForm = () => {
         />
         <label>Status</label>
         <select name="status" value={formData.status} onChange={handleChange}>
-          <option value="not paid">Not Paid</option>
-          <option value="Paid">Paid</option>
-          <option value="Overdue">Overdue</option>
+          <option value="Not Started">Not Started</option>
+          <option value="Started">Started</option>
+          <option value="Done">Done</option>
         </select>
         <input type="submit" className="btn" value="Create Ticket" />
       </form>
