@@ -1,3 +1,4 @@
+import TicketCard from "@/app/{components}/TicketCard";
 import Ticket from "@/app/{models}/Ticket";
 import { NextResponse } from "next/server";
 export async function GET(req, { params }) {
@@ -15,6 +16,21 @@ export async function DELETE(req, { params }) {
     const { id } = params;
     await Ticket.findByIdAndDelete(id);
     return NextResponse.json({ message: "Ticket Deleted" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: "error", error }, { status: 500 });
+  }
+}
+export async function PUT(req, { params }) {
+  try {
+    const { id } = params;
+    const body = await req.json();
+    const ticketData = body.formData;
+
+    const updateTicketData = await Ticket.findByIdAndUpdate(id, {
+      ...ticketData,
+    });
+    
+    return NextResponse.json({ message: "Ticket Updated" }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: "error", error }, { status: 500 });
   }
